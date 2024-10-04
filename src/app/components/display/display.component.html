@@ -1,0 +1,16 @@
+<div class="selected-stories-container">
+    <h2>Selected Stories</h2>
+  
+    <div *ngIf="selectedStories.length > 0; else noStories">
+      <ul class="selected-stories-list">
+        <li *ngFor="let story of selectedStories" class="story-item">
+          {{ story.name }} - Points: {{ story.points.join(', ') }}
+        </li>
+      </ul>
+    </div>
+  
+    <ng-template #noStories>
+      <p class="no-stories-message">No selected stories to display.</p>
+    </ng-template>
+  </div>
+  

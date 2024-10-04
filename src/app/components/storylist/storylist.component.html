@@ -1,0 +1,24 @@
+<div class="story-list-container">
+    <div class="header">
+      <h1>Story Lists</h1>
+      <div class="buttons">
+        <button (click)="goToStoryForms()">New Story</button>
+        <button (click)="goToSprintDisplay()">Sprint Display</button>
+      </div>
+    </div>
+  
+    <div class="stories-grid">
+      <div *ngFor="let story of stories; let i = index" class="story-item">
+        <h3 class="story-title">{{ story.name }}</h3>
+        <ul class="points-list">
+          <li *ngFor="let point of (expandedIndices.has(i) ? story.points : story.points | slice:0:2)" class="point-item">
+            {{ point }}
+          </li>
+        </ul>
+        <button *ngIf="story.points.length > 2" (click)="toggleExpand(i)" class="toggle-button">
+          {{ expandedIndices.has(i) ? 'Show Less' : 'Show More' }}
+        </button>
+      </div>
+    </div>
+  </div>
+  

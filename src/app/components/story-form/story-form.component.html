@@ -1,0 +1,24 @@
+<div class="form-container">
+    <form [formGroup]="storyForm" (ngSubmit)="addStory()">
+      <div class="form-group">
+        <label for="name">Story Name</label>
+        <input id="name" formControlName="name" placeholder="Enter story name" class="form-input" />
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </div>
+  
+      <div formArrayName="points" class="form-group">
+        <label for="points">Points</label>
+        <div *ngFor="let point of points.controls; let i=index" class="point-item">
+          <input [formControlName]="i" placeholder="Enter point" class="form-input" />
+          <button type="button" (click)="removePoint(i)" class="remove-button">Remove</button>
+        </div>
+      </div>
+  
+      <button type="button" (click)="addPoint()" class="add-button">Add Point</button>
+  
+      <button type="submit" [disabled]="storyForm.invalid" class="submit-button">Add Story</button>
+    </form>
+  </div>
+  

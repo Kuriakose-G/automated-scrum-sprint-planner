@@ -1,0 +1,32 @@
+.selected-stories-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  .selected-stories-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px 0;
+  }
+  
+  .story-item {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .no-stories-message {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,31 @@
+<div class="sprint-display-container">
+  <h2>Sprint Calculator</h2>
+
+  <form [formGroup]="sprintForm" class="sprint-form">
+    <div class="form-group">
+      <label for="sprintPoints">Sprint Points:</label>
+      <input id="sprintPoints" formControlName="sprintPoints" type="number" placeholder="Enter sprint points" class="form-input" />
+      <div *ngIf="sprintForm.get('sprintPoints')?.invalid && (sprintForm.get('sprintPoints')?.dirty || sprintForm.get('sprintPoints')?.touched)" class="error-message">
+        <div *ngIf="sprintForm.get('sprintPoints')?.errors?.['required']">Sprint points are required.</div>
+        <div *ngIf="sprintForm.get('sprintPoints')?.errors?.['min']">Sprint points must be greater than 0.</div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" (click)="autoSelectStories()" class="action-button">Auto Select Stories</button>
+      <button type="button" (click)="clearStories()" class="action-button">Clear Stories</button>
+      <button type="button" (click)="clearSelectedStories()" class="action-button">Clear Selected Stories</button>
+    </div>
+  </form>
+
+  <div *ngIf="selectedStories.length > 0">
+    <h3>Selected Stories:</h3>
+    <ul class="selected-stories-list">
+      <li *ngFor="let story of selectedStories" class="story-item">{{ story.name }} - Points: {{ story.points.join(', ') }}</li>
+    </ul>
+  </div>
+
+  <div *ngIf="noStoriesMessage">
+    <p class="no-stories-message">{{ noStoriesMessage }}</p>
+  </div>
+</div>
